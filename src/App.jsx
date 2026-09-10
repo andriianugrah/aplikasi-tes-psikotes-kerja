@@ -142,17 +142,17 @@ function genAkuntansi(rng, n) {
 
 function genVerbal(rng, n) {
   const bank = [
-    ["AKURAT = ?", ["Tepat/cermat", "Lambat", "Rumit", "Mahal"], "Tepat/cermat", "Sinonim akurat adalah tepat atau cermat."],
-    ["REKONSILIASI = ?", ["Penyesuaian/pencocokan", "Pembatalan", "Penambahan", "Pengurangan"], "Penyesuaian/pencocokan", "Rekonsiliasi berarti proses mencocokkan dua catatan."],
+    ["AKURAT = ?", ["Tepat", "Lambat", "Rumit", "Mahal"], "Tepat", "Sinonim akurat adalah tepat atau cermat."],
+    ["REKONSILIASI = ?", ["Penyesuaian", "Pembatalan", "Penambahan", "Pengurangan"], "Penyesuaian/pencocoka", "Rekonsiliasi berarti proses mencocokkan dua catatan."],
     ["VALIDASI = ?", ["Pengesahan/pembuktian kebenaran", "Penghapusan", "Penundaan", "Pengulangan"], "Pengesahan/pembuktian kebenaran", "Validasi berarti proses memastikan/mengesahkan kebenaran sesuatu."],
     ["SURPLUS >< ?", ["Defisit", "Untung", "Stabil", "Neutral"], "Defisit", "Surplus (kelebihan) berlawanan dengan defisit (kekurangan)."],
-    ["KONSOLIDASI >< ?", ["Disintegrasi/pemisahan", "Penggabungan", "Penguatan", "Sinkronisasi"], "Disintegrasi/pemisahan", "Konsolidasi (penggabungan/penguatan) berlawanan dengan pemisahan."],
+    ["KONSOLIDASI >< ?", ["Disintegrasi", "Penggabungan", "Penguatan", "Sinkronisasi"], "Disintegrasi", "Konsolidasi (penggabungan/penguatan) berlawanan dengan pemisahan."],
     ["LIKUID >< ?", ["Ilikuid", "Cair", "Solvent", "Stabil"], "Ilikuid", "Likuid (mudah dicairkan) berlawanan dengan ilikuid."],
     ["NERACA : POSISI KEUANGAN = LABA RUGI : ?", ["Kinerja keuangan", "Arus kas", "Modal kerja", "Aset tetap"], "Kinerja keuangan", "Neraca menunjukkan posisi keuangan; laporan laba rugi menunjukkan kinerja keuangan."],
     ["AUDIT : VERIFIKASI = BUDGET : ?", ["Perencanaan", "Pengeluaran", "Pemasukan", "Investasi"], "Perencanaan", "Audit berfungsi memverifikasi; budget berfungsi merencanakan."],
     ["EFISIEN = ?", ["Hemat sumber daya", "Boros", "Lambat", "Rumit"], "Hemat sumber daya", "Efisien berarti menggunakan sumber daya secara optimal/hemat."],
-    ["TRANSPARAN >< ?", ["Tertutup/tersembunyi", "Jelas", "Terbuka", "Jujur"], "Tertutup/tersembunyi", "Transparan (terbuka/jelas) berlawanan dengan tertutup."],
-    ["OTORISASI = ?", ["Pemberian wewenang/izin resmi", "Pembatalan", "Penundaan", "Investigasi"], "Pemberian wewenang/izin resmi", "Otorisasi berarti pemberian izin atau wewenang secara resmi."],
+    ["TRANSPARAN >< ?", ["Tertutup", "Jelas", "Terbuka", "Jujur"], "Tertutup/tersembunyi", "Transparan (terbuka/jelas) berlawanan dengan tertutup."],
+    ["OTORISASI = ?", ["Pemberian wewenang", "Pembatalan", "Penundaan", "Investigasi"], "Pemberian wewenang", "Otorisasi berarti pemberian izin atau wewenang secara resmi."],
     ["DEBITUR : KREDITUR = PEMINJAM : ?", ["Pemberi pinjaman", "Penjamin", "Investor", "Auditor"], "Pemberi pinjaman", "Debitur adalah pihak yang berutang, kreditur adalah pemberi pinjaman, sama seperti hubungan peminjam dan pemberi pinjaman."],
   ];
   const out = [];
@@ -193,10 +193,10 @@ function genPenalaran(rng, n) {
       });
     } else {
       items.push({
-        q: `Laporan A diserahkan sebelum Laporan B. Laporan B diserahkan sebelum Laporan C. Manakah urutan yang benar dari yang paling awal?`,
+        q: `Laporan C diserahkan sebelum Laporan A. Laporan C diserahkan setelah Laporan B. Manakah urutan yang benar dari yang paling awal?`,
         options: shuffle(["A, B, C", "C, B, A", "B, A, C", "A, C, B"], rng),
-        answer: "A, B, C",
-        explain: "Relasi urutan bersifat transitif: A sebelum B, B sebelum C, maka A sebelum B sebelum C.",
+        answer: "B, C, A",
+        explain: "Relasi urutan bersifat transitif: B sebelum C, C sebelum A, maka A setelah C.",
       });
     }
   }
