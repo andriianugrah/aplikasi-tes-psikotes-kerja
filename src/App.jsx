@@ -163,7 +163,7 @@ function genAkuntansi(rng, n) {
 function genVerbal(rng, n) {
   const bank = [
     ["AKURAT = ?", ["Tepat", "Lambat", "Rumit", "Mahal"], "Tepat", "Sinonim akurat adalah tepat atau cermat."],
-    ["REKONSILIASI = ?", ["Penyesuaian", "Pembatalan", "Penambahan", "Pengurangan"], "Penyesuaian/pencocoka", "Rekonsiliasi berarti proses mencocokkan dua catatan."],
+    ["REKONSILIASI = ?", ["Penyesuaian", "Pembatalan", "Penambahan", "Pengurangan"], "Penyesuaian/pencocokan", "Rekonsiliasi berarti proses mencocokkan dua catatan."],
     ["VALIDASI = ?", ["Pengesahan/pembuktian kebenaran", "Penghapusan", "Penundaan", "Pengulangan"], "Pengesahan/pembuktian kebenaran", "Validasi berarti proses memastikan/mengesahkan kebenaran sesuatu."],
     ["SURPLUS >< ?", ["Defisit", "Untung", "Stabil", "Neutral"], "Defisit", "Surplus (kelebihan) berlawanan dengan defisit (kekurangan)."],
     ["KONSOLIDASI >< ?", ["Disintegrasi", "Penggabungan", "Penguatan", "Sinkronisasi"], "Disintegrasi", "Konsolidasi (penggabungan/penguatan) berlawanan dengan pemisahan."],
