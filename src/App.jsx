@@ -523,7 +523,7 @@ export default function App() {
               ))}
             </div>
             <p style={{ fontSize: 13, color: MUTED, lineHeight: 1.7, marginBottom: 26 }}>
-              Ambang kelulusan simulasi ini ditetapkan pada {Math.round(PASS_THRESHOLD * 100)}% jawaban benar dari total 250 soal, angka ini hanya patokan latihan, bukan standar resmi Nusantara Sakti Group (perusahaan tidak mempublikasikan ambang nilai psikotes mereka).
+              Ambang kelulusan simulasi ini ditetapkan pada {Math.round(PASS_THRESHOLD * 100)}% jawaban benar dari total 250 soal, angka ini hanya patokan latihan, bukan standar resmi.
             </p>
             <button onClick={startExam} style={btnPrimary}>
               Mulai Simulasi
@@ -707,7 +707,7 @@ export default function App() {
                 {finalStats.totalCorrect} / {finalStats.totalQuestions} benar ({Math.round(finalStats.overallPct * 100)}%)
               </div>
               <p style={{ fontSize: 12.5, color: MUTED, marginTop: 14, lineHeight: 1.7 }}>
-                Ambang lulus simulasi: {Math.round(PASS_THRESHOLD * 100)}%. Ini patokan latihan pribadi, bukan standar resmi Nusantara Sakti Group.
+                Ambang lulus simulasi: {Math.round(PASS_THRESHOLD * 100)}%. Ini patokan latihan pribadi, bukan standar resmi.
               </p>
             </div>
 
