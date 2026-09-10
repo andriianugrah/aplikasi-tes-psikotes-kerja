@@ -33,23 +33,43 @@ function genKetelitian(rng, n) {
     const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ0123456789";
     let base = "";
     for (let k = 0; k < len; k++) base += chars[randInt(rng, 0, chars.length - 1)];
-    const isSame = rng() > 0.45;
+    const wantSame = rng() > 0.45;
+
+    let isSame = true;
     let variant = base;
     let explain = "Kedua deret identik persis, karakter demi karakter.";
-    if (!isSame) {
-      const pos = randInt(rng, 0, len - 2);
-      const arr = base.split("");
-      [arr[pos], arr[pos + 1]] = [arr[pos + 1], arr[pos]];
-      variant = arr.join("");
-      explain = `Karakter pada posisi ke-${pos + 1} dan ke-${pos + 2} tertukar (${base.slice(pos, pos + 2)} vs ${variant.slice(pos, pos + 2)}).`;
+
+    if (!wantSame) {
+      // cari posisi yang KARAKTERNYA BEDA dulu
+      const candidatePositions = [];
+      for (let p = 0; p < len - 1; p++) {
+        if (base[p] !== base[p + 1]) candidatePositions.push(p);
+      }
+
+      if (candidatePositions.length > 0) {
+        const pos = candidatePositions[randInt(rng, 0, candidatePositions.length - 1)];
+        const arr = base.split("");
+        [arr[pos], arr[pos + 1]] = [arr[pos + 1], arr[pos]];
+        variant = arr.join("");
+        isSame = false;
+        explain = `Karakter pada posisi ke-${pos + 1} dan ke-${pos + 2} tertukar (${base.slice(pos, pos + 2)} vs ${variant.slice(pos, pos + 2)}).`;
+      } else {
+        // fallback langka: semua pasangan bersebelahan kebetulan sama
+        const pos = randInt(rng, 0, len - 1);
+        const original = base[pos];
+        let replacement;
+        do {
+          replacement = chars[randInt(rng, 0, chars.length - 1)];
+        } while (replacement === original);
+        const arr = base.split("");
+        arr[pos] = replacement;
+        variant = arr.join("");
+        isSame = false;
+        explain = `Karakter pada posisi ke-${pos + 1} berbeda (${original} vs ${replacement}).`;
+      }
     }
-    items.push({
-      q: "Apakah kedua kode berikut SAMA atau BEDA?",
-      code: `A: ${base}\nB: ${variant}`,
-      options: ["SAMA", "BEDA"],
-      answer: isSame ? "SAMA" : "BEDA",
-      explain,
-    });
+
+    items.push({ ... answer: isSame ? "SAMA" : "BEDA", ... });
   }
   return items;
 }
